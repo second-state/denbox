@@ -48,6 +48,7 @@
   .logo-mark i:last-child { background: var(--us); }
   .nav-links { display: flex; gap: 36px; align-items: center; font-size: 15px; }
   .nav-links a:not(.btn):hover { color: var(--muted); }
+  .nav-links .lang { font-size: 13px; letter-spacing: .04em; }
 
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-family: var(--sans); font-size: 15px; font-weight: 500; border: 1px solid var(--ink); cursor: pointer; transition: transform .15s, background .15s, color .15s; }
   .btn-dark { background: var(--ink); color: var(--bg); }
@@ -182,7 +183,8 @@
 
   @media (max-width: 900px) {
     .wrap { padding: 0 22px; }
-    .nav-links a:not(.btn) { display: none; }
+    .nav-links a:not(.btn):not(.lang) { display: none; }
+    .nav-links { gap: 20px; }
     .hero { padding-top: 56px; }
     .hero-top, .sec-head, .plans, .join-grid, .lineup, .svc, .incl, .loc { grid-template-columns: 1fr; }
     .tile + .tile, .incl div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
@@ -209,6 +211,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#locations">Locations</a>
       <a href="#faq">FAQ</a>
+      <a href="zh/" class="lang" hreflang="zh-CN" lang="zh-CN">中文</a>
       <a href="#join" class="btn btn-dark">Reserve</a>
     </div>
   </div>

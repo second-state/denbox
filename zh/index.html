@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DenBox — 租一台 Mac mini、Linux 桌面或 AI 服务器</title>
+<meta name="description" content="在新加坡或圣何塞租用独享的 Mac mini（M4 / M5 / M6）、Omarchy Linux 主机或 Olares One。每月 $89 起。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F3EE;
+    --paper: #FBFAF7;
+    --ink: #1A1A1A;
+    --muted: #6B6862;
+    --line: #DAD6CC;
+    --sg: #E2483D;
+    --us: #2B4C9B;
+    --serif: "Instrument Serif", Georgia, serif;
+    --sans: "Geist", system-ui, sans-serif;
+    --mono: "Geist Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  .mono { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .muted { color: var(--muted); }
+  em { font-style: italic; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(245,243,238,.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-weight: 600; font-size: 20px; letter-spacing: -.02em; }
+  .logo-mark { display: flex; gap: 4px; }
+  .logo-mark i { width: 9px; height: 9px; border-radius: 2px; display: block; }
+  .logo-mark i:first-child { background: var(--sg); }
+  .logo-mark i:last-child { background: var(--us); }
+  .nav-links { display: flex; gap: 36px; align-items: center; font-size: 15px; }
+  .nav-links a:not(.btn):hover { color: var(--muted); }
+  .nav-links .lang { font-size: 13px; letter-spacing: .04em; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-family: var(--sans); font-size: 15px; font-weight: 500; border: 1px solid var(--ink); cursor: pointer; transition: transform .15s, background .15s, color .15s; }
+  .btn-dark { background: var(--ink); color: var(--bg); }
+  .btn-dark:hover { transform: translateY(-1px); background: #000; }
+  .btn-ghost { background: transparent; color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+  /* Hero */
+  .hero { padding: 88px 0 40px; }
+  .hero-top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8vw, 112px); line-height: .92; letter-spacing: -.035em; }
+  h1 em { color: var(--sg); }
+  .hero-sub { font-size: 19px; max-width: 420px; padding-bottom: 14px; }
+  .hero-sub p { margin-bottom: 28px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .map-dot { fill: #C9C4B8; }
+  .arc { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 4 5; animation: dash 30s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -600; } }
+  .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-out infinite; }
+  @keyframes pulse { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(4.5); opacity: 0; } }
+  .node-label { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; }
+  .node-city { font-family: var(--serif); font-size: 22px; }
+  .map-legend { display: flex; justify-content: space-between; margin-top: 16px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .stat { padding: 36px 28px 36px 0; }
+  .stat + .stat { padding-left: 28px; border-left: 1px solid var(--line); }
+  .stat b { display: block; font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.1; letter-spacing: -.02em; }
+
+  /* Section heads */
+  section { padding: 120px 0 0; }
+  .sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 56px; align-items: end; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 6vw, 80px); line-height: 1; letter-spacing: -.03em; }
+
+  /* Lineup (hero) */
+  .lineup { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 72px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+  .tile { padding: 28px 28px 32px 0; display: flex; flex-direction: column; gap: 6px; transition: background .2s; }
+  .tile + .tile { padding-left: 28px; border-left: 1px solid var(--line); }
+  .tile:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+  .tile h3 { font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.05; letter-spacing: -.02em; }
+  .tile .tag { display: inline-flex; align-items: center; gap: 8px; }
+  .tile .tag i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+  .tile-foot { margin-top: 18px; display: flex; justify-content: space-between; align-items: baseline; }
+  .tile-foot b { font-family: var(--serif); font-weight: 400; font-size: 28px; }
+
+  .addon { margin-top: 24px; padding: 28px 36px; border: 1px dashed var(--ink); display: grid; grid-template-columns: 1fr 2fr auto; gap: 32px; align-items: center; }
+  .addon h4 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.1; margin-top: 4px; }
+  .addon p { font-size: 16px; }
+
+  /* Compare */
+  .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+  .cmp { padding: 28px 28px 8px 0; }
+  .cmp + .cmp { padding-left: 28px; border-left: 1px solid var(--line); }
+  .cmp h4 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.1; margin: 8px 0 20px; }
+  .cmp-row { display: grid; grid-template-columns: 1fr auto; row-gap: 6px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .cmp-row small { color: var(--muted); font-family: var(--mono); font-size: 11px; margin-left: 6px; }
+  .cmp-row b { font-family: var(--mono); font-weight: 400; font-size: 14px; }
+  .cmp-row i { grid-column: 1 / -1; height: 4px; width: var(--w); background: #C9C4B8; border-radius: 2px; }
+  .cmp-us { font-weight: 500; }
+  .cmp-us b { font-weight: 500; color: var(--sg); }
+  .cmp-us i { background: var(--sg); }
+  .cmp-note { font-size: 14px; margin-top: 14px; }
+
+  /* Services */
+  .svc { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 40px; padding: 44px 0; border-top: 1px solid var(--line); }
+  .svc:last-child { border-bottom: 1px solid var(--line); }
+  .svc h3 { font-family: var(--serif); font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: -.02em; margin: 10px 0 14px; }
+  .svc ul { list-style: none; }
+  .svc li { padding: 8px 0 8px 22px; position: relative; font-size: 16px; }
+  .svc li::before { content: "→"; position: absolute; left: 0; color: var(--muted); }
+  .svc .who { font-size: 15px; }
+  .svc .who b { font-weight: 500; display: block; margin-bottom: 6px; }
+
+  /* Included */
+  .incl { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+  .incl div { padding: 28px 28px 32px 0; border-bottom: 1px solid var(--line); }
+  .incl div:not(:nth-child(3n+1)) { padding-left: 28px; border-left: 1px solid var(--line); }
+  .incl h4 { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1.1; margin: 10px 0 8px; }
+
+  /* Locations (compact) */
+  .loc { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: center; }
+  .loc svg { width: 100%; height: auto; display: block; }
+  .loc-list > div { padding: 24px 0; border-top: 1px solid var(--line); }
+  .loc-list > div:last-child { border-bottom: 1px solid var(--line); }
+  .loc-list h4 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1; display: flex; justify-content: space-between; align-items: baseline; margin: 8px 0 8px; }
+  .loc-list h4 span { font-family: var(--mono); font-size: 18px; }
+  .loc-list p { font-size: 15px; }
+
+  /* Pricing */
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
+  .plan { padding: 48px 44px; display: flex; flex-direction: column; }
+  .plan + .plan { border-left: 1px solid var(--ink); }
+  .plan-featured { background: var(--ink); color: var(--bg); }
+  .plan-featured .muted { color: #A9A59C; }
+  .plan-featured li { border-color: #3A3936; }
+  .plan-featured .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+  .plan h3 { font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1; }
+  .price { font-family: var(--serif); font-size: 80px; line-height: 1; letter-spacing: -.03em; margin: 28px 0 4px; }
+  .price small { font-family: var(--mono); font-size: 14px; letter-spacing: 0; }
+  .plan ul { list-style: none; margin: 28px 0 36px; flex: 1; }
+  .plan li { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 15px; }
+  .plan li span:last-child { font-family: var(--mono); font-size: 14px; }
+  .pricing-note { margin-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* FAQ */
+  .faq { max-width: 860px; }
+  details { border-top: 1px solid var(--line); padding: 24px 0; }
+  details:last-child { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; font-family: var(--serif); font-size: 28px; line-height: 1.2; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-family: var(--sans); font-weight: 300; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin-top: 14px; max-width: 680px; color: var(--muted); }
+
+  /* Waitlist */
+  .join { margin-top: 140px; background: var(--ink); color: var(--bg); padding: 110px 0; }
+  .join h2 em { color: var(--sg); }
+  .join-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
+  form { display: flex; flex-direction: column; gap: 14px; }
+  .field { display: flex; border: 1px solid #4A4844; border-radius: 999px; overflow: hidden; }
+  .field input, .field select { flex: 1; background: transparent; border: 0; color: var(--bg); font-family: var(--sans); font-size: 16px; padding: 16px 24px; outline: none; }
+  .field select { flex: 0 0 auto; border-left: 1px solid #4A4844; font-family: var(--mono); font-size: 13px; cursor: pointer; }
+  .field select option { color: var(--ink); }
+  .join .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); justify-content: center; padding: 16px; }
+  .form-msg { min-height: 22px; font-size: 14px; color: #A9A59C; }
+
+  footer { background: var(--ink); color: #8F8B83; border-top: 1px solid #333; padding: 32px 0 48px; font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer .logo { color: var(--bg); font-size: 16px; }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 22px; }
+    .nav-links a:not(.btn):not(.lang) { display: none; }
+    .nav-links { gap: 20px; }
+    .hero { padding-top: 56px; }
+    .hero-top, .sec-head, .plans, .join-grid, .lineup, .svc, .incl, .loc { grid-template-columns: 1fr; }
+    .tile + .tile, .incl div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .svc { gap: 16px; }
+    .cmp-grid { grid-template-columns: 1fr; }
+    .cmp + .cmp { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .addon { grid-template-columns: 1fr; gap: 12px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .plan + .plan { border-left: 0; border-top: 1px solid var(--ink); }
+    .price { font-size: 72px; }
+    .node-label { display: none; }
+  }
+
+  /* Chinese overrides: CJK font fallbacks, no faux-italic, looser line-height */
+  :root {
+    --serif: "Instrument Serif", "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+    --sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  }
+  body { font-weight: 400; }
+  em { font-style: normal; }
+  h1 { font-size: clamp(44px, 7vw, 96px); line-height: 1.12; letter-spacing: 0; }
+  h2 { line-height: 1.15; letter-spacing: 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo"><span class="logo-mark"><i></i><i></i></span>DenBox</a>
+    <div class="nav-links">
+      <a href="#services">服务</a>
+      <a href="#pricing">价格</a>
+      <a href="#locations">机房位置</a>
+      <a href="#faq">常见问题</a>
+      <a href="../" class="lang mono" hreflang="en" lang="en">EN</a>
+      <a href="#join" class="btn btn-dark">预订</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <h1>租机器，<br><em>不折腾硬件。</em></h1>
+      <div class="hero-sub">
+        <p>独享的 Mac mini、Omarchy Linux 桌面和 Olares One AI 服务器——我们装好、联网、全程照看，而且跑在家庭宽带上，不在数据中心。60 秒即可就绪，每月 <b>$89</b> 起。</p>
+        <div class="hero-cta">
+          <a href="#pricing" class="btn btn-dark">选一台机器 →</a>
+          <a href="#services" class="btn btn-ghost">包含什么</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="lineup">
+      <a href="#svc-mac" class="tile">
+        <span class="mono muted tag"><i style="background:var(--sg)"></i>macOS</span>
+        <h3>Mac mini</h3>
+        <span class="muted">iOS 构建、Xcode、只能在 macOS 上跑的 Agent。</span>
+        <span class="tile-foot"><b>$129</b><span class="mono muted">/ 月</span></span>
+      </a>
+      <a href="#svc-omarchy" class="tile">
+        <span class="mono muted tag"><i style="background:var(--us)"></i>Linux</span>
+        <h3>Omarchy Remote</h3>
+        <span class="muted">调校好的 Arch + Hyprland 开发桌面。</span>
+        <span class="tile-foot"><b>$89</b><span class="mono muted">/ 月</span></span>
+      </a>
+      <a href="#svc-olares" class="tile">
+        <span class="mono muted tag"><i style="background:var(--ink)"></i>AI 服务器</span>
+        <h3>Olares One</h3>
+        <span class="muted">你自己的 RTX 5090 AI 服务器。</span>
+        <span class="tile-foot"><b>$500</b><span class="mono muted">/ 月</span></span>
+      </a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>60 秒</b><span class="muted">从下单到登录</span></div>
+      <div class="stat"><b>100%</b><span class="muted">独享物理机，不是虚拟机</span></div>
+      <div class="stat"><b>家庭 IP</b><span class="muted">不是机房 IP，更少封号</span></div>
+      <div class="stat"><b>24 / 7</b><span class="muted">全天在线，自动恢复</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>三项服务，<br>各司其<em>职</em>。</h2>
+      <p class="muted">每台机器到手即用：系统已装好、远程访问已配置、全天候监控。你只需登录。</p>
+    </div>
+
+    <div class="svc" id="svc-mac">
+      <div>
+        <div class="mono" style="color:var(--sg)">01 · macOS</div>
+        <h3>Mac mini</h3>
+        <p class="muted">一台真正的云端 Mac，完全归你。</p>
+      </div>
+      <ul>
+        <li>自托管 GitHub Actions 与 fastlane 运行器</li>
+        <li>构建、签名并公证 iOS / macOS 应用</li>
+        <li>运行需要 iMessage、快捷指令或 Safari 的 Agent</li>
+        <li>在任意笔记本上远程使用 macOS 桌面</li>
+      </ul>
+      <div class="who"><b>适合</b><span class="muted">iOS 团队、独立 App 开发者，以及需要 macOS 的 AI Agent 开发者。</span></div>
+    </div>
+
+    <div class="svc" id="svc-omarchy">
+      <div>
+        <div class="mono" style="color:var(--us)">02 · Linux</div>
+        <h3>Omarchy Remote</h3>
+        <p class="muted">一台开箱即用、配置讲究的 Linux 开发机。</p>
+      </div>
+      <ul>
+        <li>预装并调校好 Omarchy（Arch + Hyprland）</li>
+        <li>在独享核心上写代码、编译、跑容器</li>
+        <li>在家、在公司还是出差，都是同一套环境</li>
+        <li>笔记本合上了，长时间任务照样在跑</li>
+      </ul>
+      <div class="who"><b>适合</b><span class="muted">想要一台 Linux 工作站、又不想自己买的开发者。</span></div>
+    </div>
+
+    <div class="svc" id="svc-olares">
+      <div>
+        <div class="mono">03 · AI 服务器</div>
+        <h3>Olares One</h3>
+        <p class="muted">你自己的 RTX 5090 AI 服务器——拉上团队一起用。</p>
+      </div>
+      <ul>
+        <li>在 24 GB 显存的 RTX 5090 上运行开源大模型</li>
+        <li>通过 Olares 应用运行图像、视频和语音模型</li>
+        <li>为团队自托管 AI 工具，网页即可访问</li>
+        <li>邀请队友共享你的机器</li>
+      </ul>
+      <div class="who"><b>适合</b><span class="muted">AI 初创公司、小团队，以及想要 GPU 主机又不想买一台的模型玩家。</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>每台机器<br><em>都</em>包含。</h2>
+      <p class="muted">你租的是结果，而不是一堆硬件杂活。</p>
+    </div>
+    <div class="incl">
+      <div><span class="mono muted">开通</span><h4>60 秒就绪</h4><p class="muted">系统已装好、账号已建好，登录信息直接发到邮箱。</p></div>
+      <div><span class="mono muted">硬件</span><h4>独享，绝不共享</h4><p class="muted">租期内，一台物理机只属于一位客户。</p></div>
+      <div><span class="mono muted">网络</span><h4>家庭宽带，不是机房</h4><p class="muted">应用和 AI 服务看到的是普通家庭网络，账号更不容易被风控或封禁。</p></div>
+      <div><span class="mono muted">控制</span><h4>重启与重装</h4><p class="muted">按需断电重启，或恢复到干净的系统。</p></div>
+      <div><span class="mono muted">稳定</span><h4>7×24 小时监控</h4><p class="muted">持续健康检查，机器卡死时自动恢复。</p></div>
+      <div><span class="mono muted">服务</span><h4>真人支持</h4><p class="muted">直接发邮件给照看你机器的团队。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>三台机器，<br><em>没有</em>意外。</h2>
+      <p class="muted">两座城市统一月付价格。带宽、固定 IPv4 和系统更新全部包含。按需求挑一台就好。</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="mono muted">Linux 开发桌面</div>
+        <h3>Omarchy Remote</h3>
+        <div class="price">$89<small> / 月</small></div>
+        <div class="mono muted">Arch Linux + Hyprland，已预配置</div>
+        <ul>
+          <li><span>CPU</span><span>Intel · 12 核</span></li>
+          <li><span>内存</span><span>16 GB</span></li>
+          <li><span>存储</span><span>256 GB SSD</span></li>
+          <li><span>网络</span><span>1 Gbps · 1 个 IPv4</span></li>
+          <li><span>访问方式</span><span>Omarchy · SSH · RDP</span></li>
+        </ul>
+        <a href="#join" class="btn btn-ghost" data-plan="omarchy">预订 Omarchy</a>
+      </div>
+      <div class="plan plan-featured">
+        <div class="mono muted">构建与 Agent 首选</div>
+        <h3>Mac mini</h3>
+        <div class="price">$129<small> / 月</small></div>
+        <div class="mono muted">真正的 Apple 芯片，独享</div>
+        <ul>
+          <li><span>芯片</span><span>Apple M4 / M5 / M6</span></li>
+          <li><span>内存</span><span>16 GB 统一内存</span></li>
+          <li><span>存储</span><span>256 GB SSD</span></li>
+          <li><span>网络</span><span>1 Gbps · 1 个 IPv4</span></li>
+          <li><span>访问方式</span><span>macOS · SSH · VNC</span></li>
+        </ul>
+        <a href="#join" class="btn" data-plan="macmini">预订 Mac mini</a>
+      </div>
+      <div class="plan">
+        <div class="mono muted">团队 AI 服务器</div>
+        <h3>Olares One</h3>
+        <div class="price">$500<small> / 月</small></div>
+        <div class="mono muted">RTX 5090 · 可邀请团队</div>
+        <ul>
+          <li><span>CPU</span><span>Core Ultra 9 275HX · 24 核</span></li>
+          <li><span>GPU</span><span>RTX 5090 Mobile · 24 GB</span></li>
+          <li><span>内存</span><span>96 GB DDR5</span></li>
+          <li><span>存储</span><span>2 TB NVMe SSD</span></li>
+          <li><span>访问方式</span><span>Olares OS · 网页 · SSH</span></li>
+        </ul>
+        <a href="#join" class="btn btn-ghost" data-plan="olares">预订 Olares One</a>
+      </div>
+    </div>
+    <div class="addon">
+      <div>
+        <span class="mono muted">增值服务</span>
+        <h4>编程 Agent 配置</h4>
+      </div>
+      <p class="muted">想要开机就能写代码？我们可以帮你在机器上安装并配置编程 Agent——Claude Code、Codex 等。</p>
+      <span class="mono">单独计价</span>
+    </div>
+    <div class="pricing-note mono muted">
+      <span>价格以美元计 · 不含税</span>
+      <span>新加坡与圣何塞均可选 · 随时取消</span>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>同样的机器，<br>每月<em>更省</em>。</h2>
+      <p class="muted">同级别、全天开机的机器在别处要花多少钱。按小时计费的价格乘以 730 小时——也就是让它跑满一个月的成本。</p>
+    </div>
+    <div class="cmp-grid">
+      <div class="cmp">
+        <div class="mono muted">Mac mini M4 · 16 GB</div>
+        <h4>Mac mini</h4>
+        <div class="cmp-row"><span>AWS EC2 Mac <small>每月</small></span><b>~$898</b><i style="--w:100%"></i></div>
+        <div class="cmp-row"><span>MacinCloud 独享版</span><b>~$164</b><i style="--w:18%"></i></div>
+        <div class="cmp-row"><span>MacStadium M4.S</span><b>$149</b><i style="--w:17%"></i></div>
+        <div class="cmp-row"><span>Scaleway M4-S</span><b>€149</b><i style="--w:17%"></i></div>
+        <div class="cmp-row cmp-us"><span>DenBox</span><b>$129</b><i style="--w:14%"></i></div>
+        <p class="cmp-note muted">其他家都在数据中心。DenBox 跑在家庭网络上——Apple ID 和各类账号更少被风控。</p>
+      </div>
+      <div class="cmp">
+        <div class="mono muted">Linux · 16 GB</div>
+        <h4>Omarchy Remote</h4>
+        <div class="cmp-row"><span>AWS EC2 · 8 vCPU <small>每月</small></span><b>~$212</b><i style="--w:100%"></i></div>
+        <div class="cmp-row"><span>Hetzner CCX23 · 4 vCPU</span><b>€86</b><i style="--w:44%"></i></div>
+        <div class="cmp-row cmp-us"><span>DenBox · 12 个物理核心</span><b>$89</b><i style="--w:42%"></i></div>
+        <p class="cmp-note muted">云虚拟机只是一台裸服务器。Omarchy Remote 是完整的桌面，配置好、登录即用。</p>
+      </div>
+      <div class="cmp">
+        <div class="mono muted">RTX 5090 · 全天开机</div>
+        <h4>Olares One</h4>
+        <div class="cmp-row"><span>RunPod Secure <small>$0.99/小时</small></span><b>~$723</b><i style="--w:100%"></i></div>
+        <div class="cmp-row"><span>Vast.ai 中位价 <small>$0.87/小时</small></span><b>~$635</b><i style="--w:88%"></i></div>
+        <div class="cmp-row"><span>RunPod Community <small>$0.69/小时</small></span><b>~$504</b><i style="--w:70%"></i></div>
+        <div class="cmp-row cmp-us"><span>DenBox</span><b>$500</b><i style="--w:69%"></i></div>
+        <p class="cmp-note muted">另含 96 GB 内存、2 TB SSD 和团队邀请——没有额外的存储费用。</p>
+      </div>
+    </div>
+    <div class="pricing-note mono muted">
+      <span>公开标价，2026 年 10 月核对</span>
+      <span>不含存储、流量和支持费用 · 价格可能变动</span>
+    </div>
+  </div>
+</section>
+
+<section id="locations">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>两个机房，<br><em>下单</em>时选。</h2>
+      <p class="muted">每项服务在两座城市都有，价格相同。选离你或你的用户最近的那个。</p>
+    </div>
+    <div class="loc">
+      <svg id="map" viewBox="0 0 720 260" aria-label="地图：新加坡与圣何塞机房位置"></svg>
+      <div class="loc-list">
+        <div>
+          <span class="mono" style="color:var(--sg)">● 新加坡</span>
+          <h4>新加坡 <span data-tz="Asia/Singapore">--:--</span></h4>
+          <p class="muted">东南亚、大中华区、日本、大洋洲。</p>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--us)">● 美国</span>
+          <h4>圣何塞 <span data-tz="America/Los_Angeles">--:--</span></h4>
+          <p class="muted">北美与南美，靠近美国的云服务和 API。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>常见问题。</h2>
+      <p></p>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>机器是我独享的吗？</summary>
+        <p>是的。每个 DenBox 套餐都是一台物理机，在租期内只分配给你。没有虚拟化，也没有“邻居”。在 Olares One 上，你还可以邀请自己的队友加入。</p>
+      </details>
+      <details>
+        <summary>不在数据中心，为什么重要？</summary>
+        <p>很多服务——Apple ID、iMessage、AI 工具、社交和支付平台——会把数据中心 IP 视为可疑，动不动就要求验证、限制甚至封禁账号。DenBox 的机器跑在家庭宽带上，在这些服务看来，它就是一台普通的家用电脑。</p>
+      </details>
+      <details>
+        <summary>怎么连接？</summary>
+        <p>你会拿到一个已开启 SSH 的固定 IPv4；Mac mini 还支持 VNC / Apple 远程桌面，Omarchy 支持远程桌面。下单后约 60 秒，登录信息就会发到你的邮箱。</p>
+      </details>
+      <details>
+        <summary>可以在新加坡和圣何塞之间切换吗？</summary>
+        <p>可以。在另一座城市预订一台机器，我们会帮你迁移数据。两个机房都提供全部三种机器，价格相同。</p>
+      </details>
+      <details>
+        <summary>能帮我配置编程 Agent 吗？</summary>
+        <p>可以。我们可以在你的机器上安装并配置 Claude Code 或 Codex 等编程 Agent，登录就能开工。这是一项增值服务，单独计价——预订时告诉我们即可。</p>
+      </details>
+      <details>
+        <summary>退租后我的数据怎么处理？</summary>
+        <p>磁盘会被安全擦除、系统会重新安装，之后机器才会交给下一位客户。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="join" id="join">
+  <div class="wrap join-grid">
+    <div>
+      <div class="mono" style="color:#A9A59C;margin-bottom:20px">抢先体验 · 机器有限</div>
+      <h2>现在就<br><em>预订</em>你的机器。</h2>
+    </div>
+    <form id="waitlist">
+      <div class="field">
+        <input type="email" name="email" placeholder="you@company.com" required aria-label="邮箱">
+        <select name="machine" aria-label="机器">
+          <option value="macmini">Mac mini</option>
+          <option value="omarchy">Omarchy</option>
+          <option value="olares">Olares One</option>
+        </select>
+        <select name="region" aria-label="机房">
+          <option value="sg">新加坡</option>
+          <option value="us">圣何塞</option>
+        </select>
+      </div>
+      <button type="submit" class="btn">加入等候名单 →</button>
+      <div class="form-msg" id="form-msg">机器就绪后我们会发邮件通知你。绝不发垃圾邮件。</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="logo"><span class="logo-mark"><i></i><i></i></span>DenBox</span>
+    <span>© 2026 DenBox。Mac 和 Mac mini 是 Apple Inc. 的商标。DenBox 与 Apple 无任何关联。</span>
+  </div>
+</footer>
+
+<script>
+  // Land mask on a 5° grid. Each row starts at lat 75°N and steps 5° south;
+  // columns are 5° of longitude starting at 180°W. Values are [startCol, endCol] spans.
+  const LAND = [
+    [[12,22],[24,32],[50,62]],
+    [[3,8],[10,24],[25,32],[40,42],[42,70]],
+    [[2,8],[9,23],[26,31],[32,33],[38,71]],
+    [[4,8],[8,16],[20,24],[27,28],[35,36],[37,68]],
+    [[8,16],[20,24],[34,35],[36,64],[67,68]],
+    [[11,25],[35,62],[64,64]],
+    [[11,23],[35,42],[45,63],[64,65]],
+    [[11,21],[34,36],[38,39],[41,61],[63,64]],
+    [[12,20],[34,60],[62,62]],
+    [[13,17],[32,47],[48,60]],
+    [[14,17],[32,43],[44,47],[49,54],[56,60]],
+    [[15,18],[19,19],[32,46],[50,52],[55,57],[60,60]],
+    [[17,18],[32,45],[51,51],[56,57],[60,60]],
+    [[19,19],[21,23],[32,46],[56,57]],
+    [[20,28],[34,44],[56,57],[59,60],[61,61]],
+    [[20,28],[37,44],[55,56],[58,61]],
+    [[20,29],[38,43],[57,58],[63,65]],
+    [[21,29],[38,44],[61,63]],
+    [[21,28],[38,44],[45,45],[60,65]],
+    [[22,27],[38,43],[45,45],[59,66]],
+    [[22,26],[38,42],[59,66]],
+    [[22,25],[39,42],[59,66]],
+    [[21,24],[63,65],[70,70]],
+    [[21,23],[65,65],[70,71]],
+    [[21,22],[69,69]],
+    [[21,22]],
+  ];
+  // Re-center the map on the Pacific (left edge = 20°W) so the SG↔US arc crosses the ocean.
+  const SHIFT = 32;
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("map");
+  const el = (tag, attrs) => {
+    const n = document.createElementNS(svgNS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  };
+  LAND.forEach((spans, row) => {
+    spans.forEach(([a, b]) => {
+      for (let c = a; c <= b; c++) {
+        const col = (c - SHIFT + 72) % 72;
+        svg.appendChild(el("circle", { cx: col * 10 + 5, cy: row * 10 + 5, r: 2.4, class: "map-dot" }));
+      }
+    });
+  });
+
+  const project = (lat, lon) => {
+    const col = ((lon + 180) / 5 - SHIFT + 72) % 72;
+    return [col * 10, (75 - lat) / 5 * 10];
+  };
+  const sg = project(1.29, 103.85);
+  const us = project(37.34, -121.89);
+  const midX = (sg[0] + us[0]) / 2;
+  svg.appendChild(el("path", { d: `M${sg[0]},${sg[1]} Q${midX},${Math.min(sg[1], us[1]) - 120} ${us[0]},${us[1]}`, class: "arc" }));
+
+  const node = ([x, y], color, city, meta, anchor) => {
+    svg.appendChild(el("circle", { cx: x, cy: y, r: 5, fill: color, class: "pulse" }));
+    svg.appendChild(el("circle", { cx: x, cy: y, r: 5, fill: color }));
+    const dx = anchor === "end" ? -14 : 14;
+    const t1 = el("text", { x: x + dx, y: y + 4, "text-anchor": anchor, class: "node-city", fill: color });
+    t1.textContent = city;
+    const t2 = el("text", { x: x + dx, y: y + 18, "text-anchor": anchor, class: "node-label", fill: "#6B6862" });
+    t2.textContent = meta;
+    svg.append(t1, t2);
+  };
+  node(sg, "#E2483D", "新加坡", "在线", "end");
+  node(us, "#2B4C9B", "圣何塞", "在线", "start");
+
+  // Live local clocks for each location.
+  const tick = () => document.querySelectorAll("[data-tz]").forEach(n => {
+    n.textContent = new Date().toLocaleTimeString("en-GB", { timeZone: n.dataset.tz, hour: "2-digit", minute: "2-digit" });
+  });
+  tick();
+  setInterval(tick, 15000);
+
+  document.querySelectorAll("[data-plan]").forEach(b => b.addEventListener("click", () => {
+    document.querySelector('select[name="machine"]').value = b.dataset.plan;
+  }));
+
+  // Waitlist: no backend yet, so submissions are kept in localStorage.
+  document.getElementById("waitlist").addEventListener("submit", e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target));
+    const list = JSON.parse(localStorage.getItem("denbox_waitlist") || "[]");
+    list.push({ ...data, lang: "zh", at: new Date().toISOString() });
+    localStorage.setItem("denbox_waitlist", JSON.stringify(list));
+    const city = data.region === "sg" ? "新加坡" : "圣何塞";
+    const machine = { macmini: "Mac mini", omarchy: "Omarchy", olares: "Olares One" }[data.machine];
+    document.getElementById("form-msg").textContent = `你已加入${city} ${machine} 的等候名单，我们会通过 ${data.email} 联系你。`;
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
