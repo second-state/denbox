@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentComputer — Rent a Mac mini, Linux desktop or AI server</title>
+<title>AgentComputer — Rent a computer for your AI agent</title>
 <meta name="description" content="Rent a dedicated Mac mini (M4 / M5 / M6), Omarchy Linux box or Olares One in Singapore or San Jose. From $89/month.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +60,7 @@
   .hero { padding: 88px 0 40px; }
   .hero-top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
   h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8vw, 112px); line-height: .92; letter-spacing: -.035em; }
-  h1 em { color: var(--sg); }
+  h1 em { color: var(--sg); display: block; margin-top: .2em; }
   .hero-sub { font-size: 19px; max-width: 420px; padding-bottom: 14px; }
   .hero-sub p { margin-bottom: 28px; }
   .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -75,7 +75,7 @@
   .map-legend { display: flex; justify-content: space-between; margin-top: 16px; }
 
   /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
   .stat { padding: 36px 28px 36px 0; }
   .stat + .stat { padding-left: 28px; border-left: 1px solid var(--line); }
   .stat b { display: block; font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.1; letter-spacing: -.02em; }
@@ -252,7 +252,6 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><b>60 sec</b><span class="muted">from checkout to login</span></div>
       <div class="stat"><b>100%</b><span class="muted">dedicated hardware, no VMs</span></div>
       <div class="stat"><b>Home IP</b><span class="muted">not a data center, fewer bans</span></div>
       <div class="stat"><b>24 / 7</b><span class="muted">always on, auto-recovery</span></div>
@@ -321,7 +320,7 @@
       <p class="muted">You rent the result, not a pile of hardware chores.</p>
     </div>
     <div class="incl">
-      <div><span class="mono muted">Setup</span><h4>Ready in 60 seconds</h4><p class="muted">OS installed, accounts created, credentials emailed.</p></div>
+      <div><span class="mono muted">Setup</span><h4>Ready to use</h4><p class="muted">OS installed, accounts created, credentials emailed.</p></div>
       <div><span class="mono muted">Hardware</span><h4>Dedicated, never shared</h4><p class="muted">One physical machine per customer for the whole rental.</p></div>
       <div><span class="mono muted">Network</span><h4>Residential, not data center</h4><p class="muted">Apps and AI services see a normal home connection, so accounts are less likely to be flagged or banned.</p></div>
       <div><span class="mono muted">Control</span><h4>Reboot &amp; reinstall</h4><p class="muted">Power-cycle or wipe back to a clean OS on request.</p></div>
@@ -480,7 +479,7 @@
       </details>
       <details>
         <summary>How do I connect?</summary>
-        <p>You get a static IPv4 with SSH enabled, plus VNC / Apple Remote Desktop on Mac mini and remote desktop on Omarchy. Credentials arrive by email about 60 seconds after checkout.</p>
+        <p>You get a static IPv4 with SSH enabled, plus VNC / Apple Remote Desktop on Mac mini and remote desktop on Omarchy. Credentials arrive by email after checkout.</p>
       </details>
       <details>
         <summary>Can I switch between Singapore and San Jose?</summary>

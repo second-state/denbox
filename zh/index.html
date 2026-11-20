@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentComputer — 租一台 Mac mini、Linux 桌面或 AI 服务器</title>
+<title>AgentComputer — 给你的 AI Agent 租一台电脑</title>
 <meta name="description" content="在新加坡或圣何塞租用独享的 Mac mini（M4 / M5 / M6）、Omarchy Linux 主机或 Olares One。每月 $89 起。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +60,7 @@
   .hero { padding: 88px 0 40px; }
   .hero-top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
   h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 8vw, 112px); line-height: .92; letter-spacing: -.035em; }
-  h1 em { color: var(--sg); }
+  h1 em { color: var(--sg); display: block; margin-top: .2em; }
   .hero-sub { font-size: 19px; max-width: 420px; padding-bottom: 14px; }
   .hero-sub p { margin-bottom: 28px; }
   .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -75,7 +75,7 @@
   .map-legend { display: flex; justify-content: space-between; margin-top: 16px; }
 
   /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
   .stat { padding: 36px 28px 36px 0; }
   .stat + .stat { padding-left: 28px; border-left: 1px solid var(--line); }
   .stat b { display: block; font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.1; letter-spacing: -.02em; }
@@ -262,7 +262,6 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><b>60 秒</b><span class="muted">从下单到登录</span></div>
       <div class="stat"><b>100%</b><span class="muted">独享物理机，不是虚拟机</span></div>
       <div class="stat"><b>家庭 IP</b><span class="muted">不是机房 IP，更少封号</span></div>
       <div class="stat"><b>24 / 7</b><span class="muted">全天在线，自动恢复</span></div>
@@ -331,7 +330,7 @@
       <p class="muted">你租的是结果，而不是一堆硬件杂活。</p>
     </div>
     <div class="incl">
-      <div><span class="mono muted">开通</span><h4>60 秒就绪</h4><p class="muted">系统已装好、账号已建好，登录信息直接发到邮箱。</p></div>
+      <div><span class="mono muted">开通</span><h4>到手即用</h4><p class="muted">系统已装好、账号已建好，登录信息直接发到邮箱。</p></div>
       <div><span class="mono muted">硬件</span><h4>独享，绝不共享</h4><p class="muted">租期内，一台物理机只属于一位客户。</p></div>
       <div><span class="mono muted">网络</span><h4>家庭宽带，不是机房</h4><p class="muted">应用和 AI 服务看到的是普通家庭网络，账号更不容易被风控或封禁。</p></div>
       <div><span class="mono muted">控制</span><h4>重启与重装</h4><p class="muted">按需断电重启，或恢复到干净的系统。</p></div>
@@ -490,7 +489,7 @@
       </details>
       <details>
         <summary>怎么连接？</summary>
-        <p>你会拿到一个已开启 SSH 的固定 IPv4；Mac mini 还支持 VNC / Apple 远程桌面，Omarchy 支持远程桌面。下单后约 60 秒，登录信息就会发到你的邮箱。</p>
+        <p>你会拿到一个已开启 SSH 的固定 IPv4；Mac mini 还支持 VNC / Apple 远程桌面，Omarchy 支持远程桌面。下单后，登录信息会发到你的邮箱。</p>
       </details>
       <details>
         <summary>可以在新加坡和圣何塞之间切换吗？</summary>
