@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentComputer — 给你的 AI Agent 租一台电脑</title>
 <meta name="description" content="给你的 AI Agent 租一台电脑：新加坡、台北、东京、圣何塞或奥斯汀的独享 Mac mini、Omarchy Linux 桌面或 Olares One AI 服务器。每月 $89 起。">
+<link rel="alternate" hreflang="en" href="https://agentcomputer.me/">
+<link rel="alternate" hreflang="zh" href="https://agentcomputer.me/zh/">
+<link rel="alternate" hreflang="x-default" href="https://agentcomputer.me/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -619,6 +622,11 @@
   });
   tick();
   setInterval(tick, 15000);
+
+  // Remember a manual language switch so the automatic redirect doesn't override it.
+  document.querySelector(".lang").addEventListener("click", () => {
+    try { localStorage.setItem("lang", "en"); } catch (e) {}
+  });
 </script>
 </body>
 </html>

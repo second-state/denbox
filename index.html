@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentComputer — Rent a computer for your AI agent</title>
 <meta name="description" content="Rent a computer for your AI agent: a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore, Taipei, Tokyo, San Jose or Austin. From $89/month.">
+<script>
+  // Send Chinese-language browsers to /zh/ unless the visitor has picked a language.
+  (function () {
+    var pref = null;
+    try { pref = localStorage.getItem("lang"); } catch (e) {}
+    var zh = pref ? pref === "zh" : /^zh\b/i.test(navigator.language || "");
+    if (zh) location.replace("zh/" + location.search + location.hash);
+  })();
+</script>
+<link rel="alternate" hreflang="en" href="https://agentcomputer.me/">
+<link rel="alternate" hreflang="zh" href="https://agentcomputer.me/zh/">
+<link rel="alternate" hreflang="x-default" href="https://agentcomputer.me/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -609,6 +621,11 @@
   });
   tick();
   setInterval(tick, 15000);
+
+  // Remember a manual language switch so the automatic redirect doesn't override it.
+  document.querySelector(".lang").addEventListener("click", () => {
+    try { localStorage.setItem("lang", "zh"); } catch (e) {}
+  });
 </script>
 </body>
 </html>
