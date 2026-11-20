@@ -96,9 +96,6 @@
   .tile-foot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; }
   .tile-foot b { font-family: var(--serif); font-weight: 400; font-size: 28px; }
 
-  .addon { margin-top: 24px; padding: 28px 36px; border: 1px dashed var(--ink); display: grid; grid-template-columns: 1fr 2fr auto; gap: 32px; align-items: center; }
-  .addon h4 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.1; margin-top: 4px; }
-  .addon p { font-size: 16px; }
 
   /* Compare */
   .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
@@ -165,17 +162,11 @@
   details[open] summary::after { transform: rotate(45deg); }
   details p { margin-top: 14px; max-width: 680px; color: var(--muted); }
 
-  /* Waitlist */
+  /* Closing call to action */
   .join { margin-top: 140px; background: var(--ink); color: var(--bg); padding: 110px 0; }
   .join h2 em { color: var(--sg); }
   .join-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
-  form { display: flex; flex-direction: column; gap: 14px; }
-  .field { display: flex; border: 1px solid #4A4844; border-radius: 999px; overflow: hidden; }
-  .field input, .field select { flex: 1; background: transparent; border: 0; color: var(--bg); font-family: var(--sans); font-size: 16px; padding: 16px 24px; outline: none; }
-  .field select { flex: 0 0 auto; border-left: 1px solid #4A4844; font-family: var(--mono); font-size: 13px; cursor: pointer; }
-  .field select option { color: var(--ink); }
-  .join .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); justify-content: center; padding: 16px; }
-  .form-msg { min-height: 22px; font-size: 14px; color: #A9A59C; }
+  .join .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); justify-content: center; padding: 16px 28px; }
 
   footer { background: var(--ink); color: #8F8B83; border-top: 1px solid #333; padding: 32px 0 48px; font-size: 13px; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -191,17 +182,11 @@
     .svc { gap: 16px; }
     .cmp-grid { grid-template-columns: 1fr; }
     .cmp + .cmp { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-    .addon { grid-template-columns: 1fr; gap: 12px; }
     .stats { grid-template-columns: 1fr; }
     .stat { padding: 24px 0; }
     .stat + .stat { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .plan + .plan { border-left: 0; border-top: 1px solid var(--ink); }
     .price { font-size: 72px; }
-    .join-grid > * { min-width: 0; }
-    .field { flex-wrap: wrap; border-radius: 28px; }
-    .field input { flex: 1 0 100%; min-width: 0; border-bottom: 1px solid #4A4844; }
-    .field select { flex: 1 1 0; min-width: 0; }
-    .field select:first-of-type { border-left: 0; }
     .node-label { display: none; }
   }
 
@@ -227,7 +212,7 @@
       <a href="#locations">机房位置</a>
       <a href="#faq">常见问题</a>
       <a href="../" class="lang mono" hreflang="en" lang="en">EN</a>
-      <a href="#join" class="btn btn-dark">预订</a>
+      <a href="#pricing" class="btn btn-dark">立即租用</a>
     </div>
   </div>
 </nav>
@@ -365,7 +350,8 @@
           <li><span>网络</span><span>1 Gbps · 1 个 IPv4</span></li>
           <li><span>访问方式</span><span>Omarchy · SSH · RDP</span></li>
         </ul>
-        <a href="#join" class="btn btn-ghost" data-plan="omarchy">预订 Omarchy</a>
+        <!-- TODO: replace href with the Stripe payment link for this plan -->
+        <a href="#pricing" class="btn btn-ghost">租用 Omarchy Linux</a>
       </div>
       <div class="plan plan-featured">
         <div class="mono muted">构建与 Agent 首选</div>
@@ -379,7 +365,8 @@
           <li><span>网络</span><span>1 Gbps · 1 个 IPv4</span></li>
           <li><span>访问方式</span><span>macOS · SSH · VNC</span></li>
         </ul>
-        <a href="#join" class="btn" data-plan="macmini">预订 Mac mini</a>
+        <!-- TODO: replace href with the Stripe payment link for this plan -->
+        <a href="#pricing" class="btn">租用 Mac mini</a>
       </div>
       <div class="plan">
         <div class="mono muted">团队 AI 服务器</div>
@@ -393,16 +380,9 @@
           <li><span>存储</span><span>2 TB NVMe SSD</span></li>
           <li><span>访问方式</span><span>Olares OS · 网页 · SSH</span></li>
         </ul>
-        <a href="#join" class="btn btn-ghost" data-plan="olares">预订 Olares One</a>
+        <!-- TODO: replace href with the Stripe payment link for this plan -->
+        <a href="#pricing" class="btn btn-ghost">租用 Olares One</a>
       </div>
-    </div>
-    <div class="addon">
-      <div>
-        <span class="mono muted">增值服务</span>
-        <h4>编程 Agent 配置</h4>
-      </div>
-      <p class="muted">想要开机就能写代码？我们可以帮你在机器上安装并配置编程 Agent——Claude Code、Codex 等。</p>
-      <span class="mono">单独计价</span>
     </div>
     <div class="pricing-note mono muted">
       <span>价格以美元计 · 不含税</span>
@@ -498,11 +478,7 @@
       </details>
       <details>
         <summary>可以在新加坡和圣何塞之间切换吗？</summary>
-        <p>可以。在另一座城市预订一台机器，我们会帮你迁移数据。两个机房都提供全部三种机器，价格相同。</p>
-      </details>
-      <details>
-        <summary>能帮我配置编程 Agent 吗？</summary>
-        <p>可以。我们可以在你的机器上安装并配置 Claude Code 或 Codex 等编程 Agent，登录就能开工。这是一项增值服务，单独计价——预订时告诉我们即可。</p>
+        <p>可以。在另一座城市租用一台机器，我们会帮你迁移数据。两个机房都提供全部三种机器，价格相同。</p>
       </details>
       <details>
         <summary>退租后我的数据怎么处理？</summary>
@@ -515,25 +491,9 @@
 <div class="join" id="join">
   <div class="wrap join-grid">
     <div>
-      <div class="mono" style="color:#A9A59C;margin-bottom:20px">抢先体验 · 机器有限</div>
-      <h2>现在就<br><em>预订</em>你的机器。</h2>
+      <h2>现在就<br><em>租用</em>你的机器。</h2>
     </div>
-    <form id="waitlist">
-      <div class="field">
-        <input type="email" name="email" placeholder="you@company.com" required aria-label="邮箱">
-        <select name="machine" aria-label="机器">
-          <option value="macmini">Mac mini</option>
-          <option value="omarchy">Omarchy</option>
-          <option value="olares">Olares One</option>
-        </select>
-        <select name="region" aria-label="机房">
-          <option value="sg">新加坡</option>
-          <option value="us">圣何塞</option>
-        </select>
-      </div>
-      <button type="submit" class="btn">加入等候名单 →</button>
-      <div class="form-msg" id="form-msg">机器就绪后我们会发邮件通知你。绝不发垃圾邮件。</div>
-    </form>
+    <div><a href="#pricing" class="btn">选一台机器 →</a></div>
   </div>
 </div>
 
@@ -621,23 +581,6 @@
   });
   tick();
   setInterval(tick, 15000);
-
-  document.querySelectorAll("[data-plan]").forEach(b => b.addEventListener("click", () => {
-    document.querySelector('select[name="machine"]').value = b.dataset.plan;
-  }));
-
-  // Waitlist: no backend yet, so submissions are kept in localStorage.
-  document.getElementById("waitlist").addEventListener("submit", e => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
-    const list = JSON.parse(localStorage.getItem("denbox_waitlist") || "[]");
-    list.push({ ...data, lang: "zh", at: new Date().toISOString() });
-    localStorage.setItem("denbox_waitlist", JSON.stringify(list));
-    const city = data.region === "sg" ? "新加坡" : "圣何塞";
-    const machine = { macmini: "Mac mini", omarchy: "Omarchy", olares: "Olares One" }[data.machine];
-    document.getElementById("form-msg").textContent = `你已加入${city} ${machine} 的等候名单，我们会通过 ${data.email} 联系你。`;
-    e.target.reset();
-  });
 </script>
 </body>
 </html>

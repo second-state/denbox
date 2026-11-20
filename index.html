@@ -96,9 +96,6 @@
   .tile-foot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; }
   .tile-foot b { font-family: var(--serif); font-weight: 400; font-size: 28px; }
 
-  .addon { margin-top: 24px; padding: 28px 36px; border: 1px dashed var(--ink); display: grid; grid-template-columns: 1fr 2fr auto; gap: 32px; align-items: center; }
-  .addon h4 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.1; margin-top: 4px; }
-  .addon p { font-size: 16px; }
 
   /* Compare */
   .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
@@ -165,17 +162,11 @@
   details[open] summary::after { transform: rotate(45deg); }
   details p { margin-top: 14px; max-width: 680px; color: var(--muted); }
 
-  /* Waitlist */
+  /* Closing call to action */
   .join { margin-top: 140px; background: var(--ink); color: var(--bg); padding: 110px 0; }
   .join h2 em { color: var(--sg); }
   .join-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
-  form { display: flex; flex-direction: column; gap: 14px; }
-  .field { display: flex; border: 1px solid #4A4844; border-radius: 999px; overflow: hidden; }
-  .field input, .field select { flex: 1; background: transparent; border: 0; color: var(--bg); font-family: var(--sans); font-size: 16px; padding: 16px 24px; outline: none; }
-  .field select { flex: 0 0 auto; border-left: 1px solid #4A4844; font-family: var(--mono); font-size: 13px; cursor: pointer; }
-  .field select option { color: var(--ink); }
-  .join .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); justify-content: center; padding: 16px; }
-  .form-msg { min-height: 22px; font-size: 14px; color: #A9A59C; }
+  .join .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); justify-content: center; padding: 16px 28px; }
 
   footer { background: var(--ink); color: #8F8B83; border-top: 1px solid #333; padding: 32px 0 48px; font-size: 13px; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -191,17 +182,11 @@
     .svc { gap: 16px; }
     .cmp-grid { grid-template-columns: 1fr; }
     .cmp + .cmp { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-    .addon { grid-template-columns: 1fr; gap: 12px; }
     .stats { grid-template-columns: 1fr; }
     .stat { padding: 24px 0; }
     .stat + .stat { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .plan + .plan { border-left: 0; border-top: 1px solid var(--ink); }
     .price { font-size: 72px; }
-    .join-grid > * { min-width: 0; }
-    .field { flex-wrap: wrap; border-radius: 28px; }
-    .field input { flex: 1 0 100%; min-width: 0; border-bottom: 1px solid #4A4844; }
-    .field select { flex: 1 1 0; min-width: 0; }
-    .field select:first-of-type { border-left: 0; }
     .node-label { display: none; }
   }
 </style>
@@ -217,7 +202,7 @@
       <a href="#locations">Locations</a>
       <a href="#faq">FAQ</a>
       <a href="zh/" class="lang" hreflang="zh-CN" lang="zh-CN">中文</a>
-      <a href="#join" class="btn btn-dark">Reserve</a>
+      <a href="#pricing" class="btn btn-dark">Rent now</a>
     </div>
   </div>
 </nav>
@@ -355,7 +340,8 @@
           <li><span>Network</span><span>1 Gbps · 1 IPv4</span></li>
           <li><span>Access</span><span>Omarchy · SSH · RDP</span></li>
         </ul>
-        <a href="#join" class="btn btn-ghost" data-plan="omarchy">Reserve Omarchy</a>
+        <!-- TODO: replace href with the Stripe payment link for this plan -->
+        <a href="#pricing" class="btn btn-ghost">Rent Omarchy Linux</a>
       </div>
       <div class="plan plan-featured">
         <div class="mono muted">For builds &amp; agents</div>
@@ -369,7 +355,8 @@
           <li><span>Network</span><span>1 Gbps · 1 IPv4</span></li>
           <li><span>Access</span><span>macOS · SSH · VNC</span></li>
         </ul>
-        <a href="#join" class="btn" data-plan="macmini">Reserve Mac mini</a>
+        <!-- TODO: replace href with the Stripe payment link for this plan -->
+        <a href="#pricing" class="btn">Rent Mac mini</a>
       </div>
       <div class="plan">
         <div class="mono muted">Team AI server</div>
@@ -383,16 +370,9 @@
           <li><span>Storage</span><span>2 TB NVMe SSD</span></li>
           <li><span>Access</span><span>Olares OS · Web · SSH</span></li>
         </ul>
-        <a href="#join" class="btn btn-ghost" data-plan="olares">Reserve Olares One</a>
+        <!-- TODO: replace href with the Stripe payment link for this plan -->
+        <a href="#pricing" class="btn btn-ghost">Rent Olares One</a>
       </div>
-    </div>
-    <div class="addon">
-      <div>
-        <span class="mono muted">Add-on</span>
-        <h4>Coding agent setup</h4>
-      </div>
-      <p class="muted">Want it ready to code? We can install and configure a coding agent — Claude Code, Codex and more — on your machine for you.</p>
-      <span class="mono">Priced separately</span>
     </div>
     <div class="pricing-note mono muted">
       <span>Prices in USD · excl. tax</span>
@@ -488,11 +468,7 @@
       </details>
       <details>
         <summary>Can I switch between Singapore and San Jose?</summary>
-        <p>Yes. Reserve a machine in the other city and we'll help you move your data. Both locations offer all three machines at the same price.</p>
-      </details>
-      <details>
-        <summary>Can you set up a coding agent for me?</summary>
-        <p>Yes. We can install and configure a coding agent such as Claude Code or Codex on your machine so it's ready to work when you log in. This is an add-on, priced separately — mention it when you reserve.</p>
+        <p>Yes. Rent a machine in the other city and we'll help you move your data. Both locations offer all three machines at the same price.</p>
       </details>
       <details>
         <summary>What happens to my data when I cancel?</summary>
@@ -505,25 +481,9 @@
 <div class="join" id="join">
   <div class="wrap join-grid">
     <div>
-      <div class="mono" style="color:#A9A59C;margin-bottom:20px">Early access · limited machines</div>
-      <h2>Reserve your<br>machine, <em>now.</em></h2>
+      <h2>Rent your<br>machine, <em>now.</em></h2>
     </div>
-    <form id="waitlist">
-      <div class="field">
-        <input type="email" name="email" placeholder="you@company.com" required aria-label="Email">
-        <select name="machine" aria-label="Machine">
-          <option value="macmini">Mac mini</option>
-          <option value="omarchy">Omarchy</option>
-          <option value="olares">Olares One</option>
-        </select>
-        <select name="region" aria-label="Region">
-          <option value="sg">Singapore</option>
-          <option value="us">San Jose</option>
-        </select>
-      </div>
-      <button type="submit" class="btn">Join the waitlist →</button>
-      <div class="form-msg" id="form-msg">We'll email you when your machine is ready. No spam.</div>
-    </form>
+    <div><a href="#pricing" class="btn">Choose a machine →</a></div>
   </div>
 </div>
 
@@ -611,23 +571,6 @@
   });
   tick();
   setInterval(tick, 15000);
-
-  document.querySelectorAll("[data-plan]").forEach(b => b.addEventListener("click", () => {
-    document.querySelector('select[name="machine"]').value = b.dataset.plan;
-  }));
-
-  // Waitlist: no backend yet, so submissions are kept in localStorage.
-  document.getElementById("waitlist").addEventListener("submit", e => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
-    const list = JSON.parse(localStorage.getItem("denbox_waitlist") || "[]");
-    list.push({ ...data, at: new Date().toISOString() });
-    localStorage.setItem("denbox_waitlist", JSON.stringify(list));
-    const city = data.region === "sg" ? "Singapore" : "San Jose";
-    const machine = { macmini: "Mac mini", omarchy: "Omarchy", olares: "Olares One" }[data.machine];
-    document.getElementById("form-msg").textContent = `You're on the list for ${machine} in ${city}. We'll be in touch at ${data.email}.`;
-    e.target.reset();
-  });
 </script>
 </body>
 </html>
