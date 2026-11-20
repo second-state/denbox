@@ -4,7 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentComputer — Rent a computer for your AI agent</title>
-<meta name="description" content="Rent a computer for your AI agent: a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore or San Jose. From $89/month.">
+<meta name="description" content="Rent a computer for your AI agent: a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore, Taipei, Tokyo, San Jose or Austin. From $89/month.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AgentComputer">
+<meta property="og:title" content="AgentComputer — Rent a computer for your AI agent">
+<meta property="og:description" content="Rent a computer for your AI agent: a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore, Taipei, Tokyo, San Jose or Austin. From $89/month.">
+<meta property="og:url" content="https://agentcomputer.me/">
+<meta property="og:image" content="https://agentcomputer.me/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rent a computer for your AI agent.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AgentComputer — Rent a computer for your AI agent">
+<meta name="twitter:description" content="Rent a computer for your AI agent: a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore, Taipei, Tokyo, San Jose or Austin. From $89/month.">
+<meta name="twitter:image" content="https://agentcomputer.me/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -132,9 +149,8 @@
   .loc svg { width: 100%; height: auto; display: block; }
   .loc-list > div { padding: 24px 0; border-top: 1px solid var(--line); }
   .loc-list > div:last-child { border-bottom: 1px solid var(--line); }
-  .loc-list h4 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1; display: flex; justify-content: space-between; align-items: baseline; margin: 8px 0 8px; }
+  .loc-list h4 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1; display: flex; justify-content: space-between; align-items: baseline; margin: 8px 0 0; }
   .loc-list h4 span { font-family: var(--mono); font-size: 18px; }
-  .loc-list p { font-size: 15px; }
 
   /* Pricing */
   .plans { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
@@ -324,7 +340,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2>Three machines.<br><em>No</em> surprises.</h2>
-      <p class="muted">Flat monthly price in either city. Bandwidth, static IPv4 and OS updates included. Pick the box that fits the job.</p>
+      <p class="muted">Flat monthly price in every city. Bandwidth, static IPv4 and OS updates included. Pick the box that fits the job.</p>
     </div>
 
     <div class="plans">
@@ -376,7 +392,7 @@
     </div>
     <div class="pricing-note mono muted">
       <span>Prices in USD · excl. tax</span>
-      <span>Available in Singapore &amp; San Jose · cancel anytime</span>
+      <span>Singapore · Taipei · Tokyo · San Jose · Austin · cancel anytime</span>
     </div>
   </div>
 </section>
@@ -426,21 +442,31 @@
 <section id="locations">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Two locations.<br>Pick at <em>checkout</em>.</h2>
-      <p class="muted">Every service is available in both cities at the same price. Choose the one closest to you or your users.</p>
+      <h2>Five locations.<br>Pick at <em>checkout</em>.</h2>
+      <p class="muted">Every service is available in all five cities at the same price. Choose the one closest to you or your users.</p>
     </div>
     <div class="loc">
-      <svg id="map" viewBox="0 0 720 260" aria-label="Map showing Singapore and San Jose locations"></svg>
+      <svg id="map" viewBox="0 0 720 260" aria-label="Map showing Singapore, Taipei, Tokyo, San Jose and Austin locations"></svg>
       <div class="loc-list">
         <div>
-          <span class="mono" style="color:var(--sg)">● Singapore</span>
+          <span class="mono" style="color:var(--sg)">● Asia Pacific</span>
           <h4>Singapore <span data-tz="Asia/Singapore">--:--</span></h4>
-          <p class="muted">Southeast Asia, Greater China, Japan, Oceania.</p>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--sg)">● Asia Pacific</span>
+          <h4>Taipei <span data-tz="Asia/Taipei">--:--</span></h4>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--sg)">● Asia Pacific</span>
+          <h4>Tokyo <span data-tz="Asia/Tokyo">--:--</span></h4>
         </div>
         <div>
           <span class="mono" style="color:var(--us)">● United States</span>
           <h4>San Jose <span data-tz="America/Los_Angeles">--:--</span></h4>
-          <p class="muted">North &amp; South America, close to US cloud and APIs.</p>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--us)">● United States</span>
+          <h4>Austin <span data-tz="America/Chicago">--:--</span></h4>
         </div>
       </div>
     </div>
@@ -467,8 +493,8 @@
         <p>You get a static IPv4 with SSH enabled, plus VNC / Apple Remote Desktop on Mac mini and remote desktop on Omarchy. Credentials arrive by email after checkout.</p>
       </details>
       <details>
-        <summary>Can I switch between Singapore and San Jose?</summary>
-        <p>Yes. Rent a machine in the other city and we'll help you move your data. Both locations offer all three machines at the same price.</p>
+        <summary>Can I switch between locations?</summary>
+        <p>Yes. Rent a machine in another city and we'll help you move your data. All five locations offer all three machines at the same price.</p>
       </details>
       <details>
         <summary>What happens to my data when I cancel?</summary>
@@ -548,9 +574,18 @@
     return [col * 10, (75 - lat) / 5 * 10];
   };
   const sg = project(1.29, 103.85);
-  const us = project(37.34, -121.89);
-  const midX = (sg[0] + us[0]) / 2;
-  svg.appendChild(el("path", { d: `M${sg[0]},${sg[1]} Q${midX},${Math.min(sg[1], us[1]) - 120} ${us[0]},${us[1]}`, class: "arc" }));
+  const tp = project(25.03, 121.56);
+  const tk = project(35.68, 139.69);
+  const sj = project(37.34, -121.89);
+  const au = project(30.27, -97.74);
+  const arc = (a, b) => {
+    const lift = Math.hypot(b[0] - a[0], b[1] - a[1]) * .45;
+    svg.appendChild(el("path", { d: `M${a[0]},${a[1]} Q${(a[0] + b[0]) / 2},${Math.min(a[1], b[1]) - lift} ${b[0]},${b[1]}`, class: "arc" }));
+  };
+  arc(sg, tp);
+  arc(tp, tk);
+  arc(tk, sj);
+  arc(sj, au);
 
   const node = ([x, y], color, city, meta, anchor) => {
     svg.appendChild(el("circle", { cx: x, cy: y, r: 5, fill: color, class: "pulse" }));
@@ -563,7 +598,10 @@
     svg.append(t1, t2);
   };
   node(sg, "#E2483D", "Singapore", "ONLINE", "end");
-  node(us, "#2B4C9B", "San Jose", "ONLINE", "start");
+  node(tp, "#E2483D", "Taipei", "ONLINE", "end");
+  node(tk, "#E2483D", "Tokyo", "ONLINE", "start");
+  node(sj, "#2B4C9B", "San Jose", "ONLINE", "end");
+  node(au, "#2B4C9B", "Austin", "ONLINE", "start");
 
   // Live local clocks for each location.
   const tick = () => document.querySelectorAll("[data-tz]").forEach(n => {

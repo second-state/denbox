@@ -4,7 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentComputer — 给你的 AI Agent 租一台电脑</title>
-<meta name="description" content="给你的 AI Agent 租一台电脑：新加坡或圣何塞的独享 Mac mini、Omarchy Linux 桌面或 Olares One AI 服务器。每月 $89 起。">
+<meta name="description" content="给你的 AI Agent 租一台电脑：新加坡、台北、东京、圣何塞或奥斯汀的独享 Mac mini、Omarchy Linux 桌面或 Olares One AI 服务器。每月 $89 起。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AgentComputer">
+<meta property="og:title" content="AgentComputer — 给你的 AI Agent 租一台电脑">
+<meta property="og:description" content="给你的 AI Agent 租一台电脑：新加坡、台北、东京、圣何塞或奥斯汀的独享 Mac mini、Omarchy Linux 桌面或 Olares One AI 服务器。每月 $89 起。">
+<meta property="og:url" content="https://agentcomputer.me/zh/">
+<meta property="og:image" content="https://agentcomputer.me/zh/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="给你的 AI Agent 租一台电脑。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AgentComputer — 给你的 AI Agent 租一台电脑">
+<meta name="twitter:description" content="给你的 AI Agent 租一台电脑：新加坡、台北、东京、圣何塞或奥斯汀的独享 Mac mini、Omarchy Linux 桌面或 Olares One AI 服务器。每月 $89 起。">
+<meta name="twitter:image" content="https://agentcomputer.me/zh/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -132,9 +149,8 @@
   .loc svg { width: 100%; height: auto; display: block; }
   .loc-list > div { padding: 24px 0; border-top: 1px solid var(--line); }
   .loc-list > div:last-child { border-bottom: 1px solid var(--line); }
-  .loc-list h4 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1; display: flex; justify-content: space-between; align-items: baseline; margin: 8px 0 8px; }
+  .loc-list h4 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1; display: flex; justify-content: space-between; align-items: baseline; margin: 8px 0 0; }
   .loc-list h4 span { font-family: var(--mono); font-size: 18px; }
-  .loc-list p { font-size: 15px; }
 
   /* Pricing */
   .plans { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
@@ -334,7 +350,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2>三台机器，<br><em>明码</em>标价。</h2>
-      <p class="muted">两座城市统一月付价格。带宽、固定 IPv4 和系统更新全部包含。按需求挑一台就好。</p>
+      <p class="muted">五座城市统一月付价格。带宽、固定 IPv4 和系统更新全部包含。按需求挑一台就好。</p>
     </div>
 
     <div class="plans">
@@ -386,7 +402,7 @@
     </div>
     <div class="pricing-note mono muted">
       <span>价格以美元计 · 不含税</span>
-      <span>新加坡与圣何塞均可选 · 随时取消</span>
+      <span>新加坡 · 台北 · 东京 · 圣何塞 · 奥斯汀 · 随时取消</span>
     </div>
   </div>
 </section>
@@ -436,21 +452,31 @@
 <section id="locations">
   <div class="wrap">
     <div class="sec-head">
-      <h2>两个机房，<br><em>下单</em>时选。</h2>
-      <p class="muted">每项服务在两座城市都有，价格相同。选离你或你的用户最近的那个。</p>
+      <h2>五个机房，<br><em>下单</em>时选。</h2>
+      <p class="muted">每项服务在五座城市都有，价格相同。选离你或你的用户最近的那个。</p>
     </div>
     <div class="loc">
-      <svg id="map" viewBox="0 0 720 260" aria-label="地图：新加坡与圣何塞机房位置"></svg>
+      <svg id="map" viewBox="0 0 720 260" aria-label="地图：新加坡、台北、东京、圣何塞与奥斯汀机房位置"></svg>
       <div class="loc-list">
         <div>
-          <span class="mono" style="color:var(--sg)">● 新加坡</span>
+          <span class="mono" style="color:var(--sg)">● 亚太</span>
           <h4>新加坡 <span data-tz="Asia/Singapore">--:--</span></h4>
-          <p class="muted">东南亚、大中华区、日本、大洋洲。</p>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--sg)">● 亚太</span>
+          <h4>台北 <span data-tz="Asia/Taipei">--:--</span></h4>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--sg)">● 亚太</span>
+          <h4>东京 <span data-tz="Asia/Tokyo">--:--</span></h4>
         </div>
         <div>
           <span class="mono" style="color:var(--us)">● 美国</span>
           <h4>圣何塞 <span data-tz="America/Los_Angeles">--:--</span></h4>
-          <p class="muted">北美与南美，靠近美国的云服务和 API。</p>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--us)">● 美国</span>
+          <h4>奥斯汀 <span data-tz="America/Chicago">--:--</span></h4>
         </div>
       </div>
     </div>
@@ -477,8 +503,8 @@
         <p>你会拿到一个已开启 SSH 的固定 IPv4；Mac mini 还支持 VNC / Apple 远程桌面，Omarchy 支持远程桌面。下单后，登录信息会发到你的邮箱。</p>
       </details>
       <details>
-        <summary>可以在新加坡和圣何塞之间切换吗？</summary>
-        <p>可以。在另一座城市租用一台机器，我们会帮你迁移数据。两个机房都提供全部三种机器，价格相同。</p>
+        <summary>可以更换机房吗？</summary>
+        <p>可以。在另一座城市租用一台机器，我们会帮你迁移数据。五个机房都提供全部三种机器，价格相同。</p>
       </details>
       <details>
         <summary>退租后我的数据怎么处理？</summary>
@@ -558,9 +584,18 @@
     return [col * 10, (75 - lat) / 5 * 10];
   };
   const sg = project(1.29, 103.85);
-  const us = project(37.34, -121.89);
-  const midX = (sg[0] + us[0]) / 2;
-  svg.appendChild(el("path", { d: `M${sg[0]},${sg[1]} Q${midX},${Math.min(sg[1], us[1]) - 120} ${us[0]},${us[1]}`, class: "arc" }));
+  const tp = project(25.03, 121.56);
+  const tk = project(35.68, 139.69);
+  const sj = project(37.34, -121.89);
+  const au = project(30.27, -97.74);
+  const arc = (a, b) => {
+    const lift = Math.hypot(b[0] - a[0], b[1] - a[1]) * .45;
+    svg.appendChild(el("path", { d: `M${a[0]},${a[1]} Q${(a[0] + b[0]) / 2},${Math.min(a[1], b[1]) - lift} ${b[0]},${b[1]}`, class: "arc" }));
+  };
+  arc(sg, tp);
+  arc(tp, tk);
+  arc(tk, sj);
+  arc(sj, au);
 
   const node = ([x, y], color, city, meta, anchor) => {
     svg.appendChild(el("circle", { cx: x, cy: y, r: 5, fill: color, class: "pulse" }));
@@ -573,7 +608,10 @@
     svg.append(t1, t2);
   };
   node(sg, "#E2483D", "新加坡", "在线", "end");
-  node(us, "#2B4C9B", "圣何塞", "在线", "start");
+  node(tp, "#E2483D", "台北", "在线", "end");
+  node(tk, "#E2483D", "东京", "在线", "start");
+  node(sj, "#2B4C9B", "圣何塞", "在线", "end");
+  node(au, "#2B4C9B", "奥斯汀", "在线", "start");
 
   // Live local clocks for each location.
   const tick = () => document.querySelectorAll("[data-tz]").forEach(n => {

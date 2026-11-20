@@ -1,6 +1,6 @@
 # AgentComputer
 
-Landing page for AgentComputer — rent a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore or San Jose.
+Landing page for AgentComputer — rent a dedicated Mac mini, Omarchy Linux desktop or Olares One AI server in Singapore, Taipei, Tokyo, San Jose or Austin.
 
 Static site, no build step:
 
