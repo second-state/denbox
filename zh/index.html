@@ -62,10 +62,9 @@
   nav { position: sticky; top: 0; z-index: 10; background: rgba(245,243,238,.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .logo { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-weight: 600; font-size: 20px; letter-spacing: -.02em; }
-  .logo-mark { display: flex; gap: 4px; }
-  .logo-mark i { width: 9px; height: 9px; border-radius: 2px; display: block; }
-  .logo-mark i:first-child { background: var(--sg); }
-  .logo-mark i:last-child { background: var(--us); }
+  .logo-mark { width: 28px; height: 28px; display: block; }
+  .logo-mark .eye { fill: var(--bg); }
+  footer .logo-mark .eye { fill: var(--ink); }
   .nav-links { display: flex; gap: 36px; align-items: center; font-size: 15px; }
   .nav-links a:not(.btn):hover { color: var(--muted); }
   .nav-links .lang { font-size: 13px; letter-spacing: .04em; }
@@ -140,6 +139,9 @@
   .svc li::before { content: "→"; position: absolute; left: 0; color: var(--muted); }
   .svc .who { font-size: 15px; }
   .svc .who b { font-weight: 500; display: block; margin-bottom: 6px; }
+  .svc-photo { grid-column: 1 / -1; margin: 8px 0 0; max-width: 560px; }
+  .svc-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+  .svc-photo figcaption { margin-top: 10px; font-size: 13px; }
 
   /* Included */
   .incl { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
@@ -224,7 +226,7 @@
 
 <nav>
   <div class="wrap">
-    <a href="#" class="logo"><span class="logo-mark"><i></i><i></i></span>AgentComputer</a>
+    <a href="#" class="logo"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2.5" y="4" width="27" height="20" rx="6" fill="currentColor"/><rect class="eye" x="10" y="9.5" width="3.6" height="7" rx="1.8"/><rect x="18.4" y="9.5" width="3.6" height="7" rx="1.8" fill="#E2483D"/><path d="M11 28.5h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>AgentComputer</a>
     <div class="nav-links">
       <a href="#services">服务</a>
       <a href="#pricing">价格</a>
@@ -298,6 +300,10 @@
         <li>在任意笔记本上远程使用 macOS 桌面</li>
       </ul>
       <div class="who"><b>适合</b><span class="muted">需要真实桌面的 AI Agent 开发者、iOS 团队和独立 App 开发者。</span></div>
+      <figure class="svc-photo">
+        <img src="../img/mac-minis.jpg" alt="桌上叠放着 11 台未拆封的 Mac mini" width="1400" height="1049" loading="lazy">
+        <figcaption class="mono muted">最新到货的一批 Mac mini，每台只租给一位用户。</figcaption>
+      </figure>
     </div>
 
     <div class="svc" id="svc-omarchy">
@@ -313,6 +319,10 @@
         <li>笔记本合上了，长时间任务照样在跑</li>
       </ul>
       <div class="who"><b>适合</b><span class="muted">想给编程 Agent 找个现成的家的开发者。</span></div>
+      <figure class="svc-photo">
+        <img src="../img/omarchy-oraki.jpg" alt="桌上的一台 Oraki 迷你主机" width="1200" height="1200" loading="lazy">
+        <figcaption class="mono muted">Omarchy Linux 跑在这台 Oraki 迷你主机上。</figcaption>
+      </figure>
     </div>
 
     <div class="svc" id="svc-olares">
@@ -328,6 +338,10 @@
         <li>邀请队友共享你的机器</li>
       </ul>
       <div class="who"><b>适合</b><span class="muted">AI 初创公司、小团队，以及想要 GPU 主机又不想买一台的模型玩家。</span></div>
+      <figure class="svc-photo">
+        <img src="../img/olares-one.jpg" alt="桌上的一台 Olares One AI 服务器" width="1200" height="900" loading="lazy">
+        <figcaption class="mono muted">Olares One，里面的 RTX 5090 只归你用。</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -521,7 +535,7 @@
 
 <footer>
   <div class="wrap">
-    <span class="logo"><span class="logo-mark"><i></i><i></i></span>AgentComputer</span>
+    <span class="logo"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2.5" y="4" width="27" height="20" rx="6" fill="currentColor"/><rect class="eye" x="10" y="9.5" width="3.6" height="7" rx="1.8"/><rect x="18.4" y="9.5" width="3.6" height="7" rx="1.8" fill="#E2483D"/><path d="M11 28.5h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>AgentComputer</span>
     <span>© 2026 AgentComputer。Mac 和 Mac mini 是 Apple Inc. 的商标。AgentComputer 与 Apple 无任何关联。</span>
   </div>
 </footer>
