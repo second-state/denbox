@@ -146,9 +146,9 @@
   .svc ul { list-style: none; }
   .svc li { padding: 8px 0 8px 22px; position: relative; font-size: 16px; }
   .svc li::before { content: "→"; position: absolute; left: 0; color: var(--muted); }
-  .svc .who { font-size: 15px; }
+  .svc .who { font-size: 15px; margin-top: 28px; }
   .svc .who b { font-weight: 500; display: block; margin-bottom: 6px; }
-  .svc-photo { grid-column: 1 / -1; margin: 8px 0 0; max-width: 560px; }
+  .svc-photo { margin: 0; }
   .svc-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
   .svc-photo figcaption { margin-top: 10px; font-size: 13px; }
 
@@ -210,6 +210,7 @@
     .hero-top, .sec-head, .plans, .join-grid, .lineup, .svc, .incl, .loc { grid-template-columns: 1fr; }
     .tile + .tile, .incl div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .svc { gap: 16px; }
+    .svc-photo { margin-top: 8px; max-width: 560px; }
     .cmp-grid { grid-template-columns: 1fr; }
     .cmp + .cmp { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .stats { grid-template-columns: 1fr; }
@@ -291,6 +292,7 @@
         <div class="mono" style="color:var(--sg)">01 · macOS</div>
         <h3>Mac mini</h3>
         <p class="muted">A real Mac for your agent's computer use, all to yourself.</p>
+        <div class="who"><b>Best for</b><span class="muted">AI agent builders who need a real desktop, iOS teams, indie app makers.</span></div>
       </div>
       <ul>
         <li>Let agents see the screen, click and type in real Mac apps</li>
@@ -298,7 +300,6 @@
         <li>Build, sign and notarize iOS / macOS apps</li>
         <li>Remote macOS desktop from any laptop</li>
       </ul>
-      <div class="who"><b>Best for</b><span class="muted">AI agent builders who need a real desktop, iOS teams, indie app makers.</span></div>
       <figure class="svc-photo">
         <img src="img/mac-minis.jpg" alt="Eleven boxed Mac minis stacked on a desk" width="1400" height="1049" loading="lazy">
         <figcaption class="mono muted">Our latest batch of Mac minis. Each one goes to a single customer.</figcaption>
@@ -310,6 +311,7 @@
         <div class="mono" style="color:var(--us)">02 · Linux</div>
         <h3>Omarchy Linux</h3>
         <p class="muted">The OS for any agent, already configured.</p>
+        <div class="who"><b>Best for</b><span class="muted">Developers who want a ready-made home for their coding agents.</span></div>
       </div>
       <ul>
         <li>All the coding agents and herdr bundled</li>
@@ -317,7 +319,6 @@
         <li>Same environment from home, office or travel</li>
         <li>Keep long-running jobs alive while your laptop sleeps</li>
       </ul>
-      <div class="who"><b>Best for</b><span class="muted">Developers who want a ready-made home for their coding agents.</span></div>
       <figure class="svc-photo">
         <img src="img/omarchy-oraki.jpg" alt="An Oraki mini PC on a desk" width="1200" height="1200" loading="lazy">
         <figcaption class="mono muted">The Oraki mini PC behind Omarchy Linux.</figcaption>
@@ -329,6 +330,7 @@
         <div class="mono">03 · AI server</div>
         <h3>Olares One</h3>
         <p class="muted">Your own RTX 5090 AI server — invite your team in.</p>
+        <div class="who"><b>Best for</b><span class="muted">AI startups, small teams and model tinkerers who want a GPU box without buying one.</span></div>
       </div>
       <ul>
         <li>Run open-source LLMs on an RTX 5090 with 24 GB of VRAM</li>
@@ -336,7 +338,6 @@
         <li>Self-host AI tools for your team with web access</li>
         <li>Invite teammates to share your machine</li>
       </ul>
-      <div class="who"><b>Best for</b><span class="muted">AI startups, small teams and model tinkerers who want a GPU box without buying one.</span></div>
       <figure class="svc-photo">
         <img src="img/olares-one.jpg" alt="An Olares One AI server on a desk" width="1200" height="900" loading="lazy">
         <figcaption class="mono muted">Olares One. The RTX 5090 inside is yours alone.</figcaption>

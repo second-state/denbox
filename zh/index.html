@@ -137,9 +137,9 @@
   .svc ul { list-style: none; }
   .svc li { padding: 8px 0 8px 22px; position: relative; font-size: 16px; }
   .svc li::before { content: "→"; position: absolute; left: 0; color: var(--muted); }
-  .svc .who { font-size: 15px; }
+  .svc .who { font-size: 15px; margin-top: 28px; }
   .svc .who b { font-weight: 500; display: block; margin-bottom: 6px; }
-  .svc-photo { grid-column: 1 / -1; margin: 8px 0 0; max-width: 560px; }
+  .svc-photo { margin: 0; }
   .svc-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
   .svc-photo figcaption { margin-top: 10px; font-size: 13px; }
 
@@ -201,6 +201,7 @@
     .hero-top, .sec-head, .plans, .join-grid, .lineup, .svc, .incl, .loc { grid-template-columns: 1fr; }
     .tile + .tile, .incl div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .svc { gap: 16px; }
+    .svc-photo { margin-top: 8px; max-width: 560px; }
     .cmp-grid { grid-template-columns: 1fr; }
     .cmp + .cmp { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .stats { grid-template-columns: 1fr; }
@@ -292,6 +293,7 @@
         <div class="mono" style="color:var(--sg)">01 · macOS</div>
         <h3>Mac mini</h3>
         <p class="muted">一台真正的 Mac，让你的 Agent 来操作电脑，完全归你。</p>
+        <div class="who"><b>适合</b><span class="muted">需要真实桌面的 AI Agent 开发者、iOS 团队和独立 App 开发者。</span></div>
       </div>
       <ul>
         <li>让 Agent 看屏幕、点击、输入，操作真正的 Mac 应用</li>
@@ -299,7 +301,6 @@
         <li>构建、签名并公证 iOS / macOS 应用</li>
         <li>在任意笔记本上远程使用 macOS 桌面</li>
       </ul>
-      <div class="who"><b>适合</b><span class="muted">需要真实桌面的 AI Agent 开发者、iOS 团队和独立 App 开发者。</span></div>
       <figure class="svc-photo">
         <img src="../img/mac-minis.jpg" alt="桌上叠放着 11 台未拆封的 Mac mini" width="1400" height="1049" loading="lazy">
         <figcaption class="mono muted">最新到货的一批 Mac mini，每台只租给一位用户。</figcaption>
@@ -311,6 +312,7 @@
         <div class="mono" style="color:var(--us)">02 · Linux</div>
         <h3>Omarchy Linux</h3>
         <p class="muted">适合任何 Agent 的操作系统，开箱即用。</p>
+        <div class="who"><b>适合</b><span class="muted">想给编程 Agent 找个现成的家的开发者。</span></div>
       </div>
       <ul>
         <li>内置各种编程 Agent 和 herdr</li>
@@ -318,7 +320,6 @@
         <li>在家、在公司还是出差，都是同一套环境</li>
         <li>笔记本合上了，长时间任务照样在跑</li>
       </ul>
-      <div class="who"><b>适合</b><span class="muted">想给编程 Agent 找个现成的家的开发者。</span></div>
       <figure class="svc-photo">
         <img src="../img/omarchy-oraki.jpg" alt="桌上的一台 Oraki 迷你主机" width="1200" height="1200" loading="lazy">
         <figcaption class="mono muted">Omarchy Linux 跑在这台 Oraki 迷你主机上。</figcaption>
@@ -330,6 +331,7 @@
         <div class="mono">03 · AI 服务器</div>
         <h3>Olares One</h3>
         <p class="muted">你自己的 RTX 5090 AI 服务器——拉上团队一起用。</p>
+        <div class="who"><b>适合</b><span class="muted">AI 初创公司、小团队，以及想要 GPU 主机又不想买一台的模型玩家。</span></div>
       </div>
       <ul>
         <li>在 24 GB 显存的 RTX 5090 上运行开源大模型</li>
@@ -337,7 +339,6 @@
         <li>为团队自托管 AI 工具，网页即可访问</li>
         <li>邀请队友共享你的机器</li>
       </ul>
-      <div class="who"><b>适合</b><span class="muted">AI 初创公司、小团队，以及想要 GPU 主机又不想买一台的模型玩家。</span></div>
       <figure class="svc-photo">
         <img src="../img/olares-one.jpg" alt="桌上的一台 Olares One AI 服务器" width="1200" height="900" loading="lazy">
         <figcaption class="mono muted">Olares One，里面的 RTX 5090 只归你用。</figcaption>
