@@ -177,7 +177,7 @@
   .faq { max-width: 860px; }
   details { border-top: 1px solid var(--line); padding: 24px 0; }
   details:last-child { border-bottom: 1px solid var(--line); }
-  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; font-family: var(--serif); font-size: 28px; line-height: 1.2; }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; padding-right: 2px; font-family: var(--serif); font-size: 28px; line-height: 1.2; }
   summary::-webkit-details-marker { display: none; }
   summary::after { content: "+"; font-family: var(--sans); font-weight: 300; transition: transform .2s; }
   details[open] summary::after { transform: rotate(45deg); }
@@ -210,6 +210,20 @@
     .plan + .plan { border-left: 0; border-top: 1px solid var(--ink); }
     .price { font-size: 72px; }
     .node-label { display: none; }
+  }
+  @media (max-width: 480px) {
+    nav .wrap { gap: 12px; }
+    nav .logo { font-size: 17px; gap: 8px; }
+    nav .logo-mark { width: 24px; height: 24px; }
+    .nav-links { gap: 14px; white-space: nowrap; }
+    nav .btn { padding: 9px 16px; font-size: 14px; }
+  }
+  @media (max-width: 350px) {
+    nav .wrap { gap: 10px; }
+    nav .logo { font-size: 15px; gap: 6px; }
+    nav .logo-mark { width: 20px; height: 20px; }
+    .nav-links { gap: 10px; }
+    nav .btn { padding: 8px 12px; font-size: 13px; }
   }
 
   /* Chinese overrides: CJK font fallbacks, no faux-italic, looser line-height */
